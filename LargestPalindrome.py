@@ -27,6 +27,7 @@ try:
     while len(str(seed)) < numberofdigits:
         seed = seed + 1
 
+    #Setting the first number to seed as this will increment.
     firstnumber = seed
 
     # Loop through the numbers, incrementing the second number and multiplying with first.
