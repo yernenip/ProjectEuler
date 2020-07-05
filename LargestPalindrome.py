@@ -16,34 +16,43 @@ print("Welcome! Find the largest paindrome number made from the product of two n
 numberofdigits = 0
 palindromenumber = 0
 
-# Accepts numbers greater than 2 digits and less than 4 digits. Any digits beyond 4 will cause performance.
-while numberofdigits < 2 or numberofdigits > 4:
-    numberofdigits = int(input("Please enter the number of digits for your two numbers (upto 4 digits): "))
+try:
+    # Accepts numbers greater than 2 digits and less than 4 digits. Any digits beyond 4 will cause performance.
+    while numberofdigits < 2 or numberofdigits > 4:
+        numberofdigits = int(input("Please enter the number of digits for your two numbers (upto 4 digits): "))
 
-seed = 0
+    seed = 0
 
-# set the starting value for the number of digits
-while len(str(seed)) < numberofdigits:
-    seed = seed + 1
+    # set the starting value for the number of digits
+    while len(str(seed)) < numberofdigits:
+        seed = seed + 1
 
-firstnumber = seed
+    firstnumber = seed
 
-# Loop through the numbers, incrementing the second number and multiplying with first.
-while len(str(firstnumber)) < numberofdigits + 1:
-    secondnumber = seed
-    while len(str(secondnumber)) < numberofdigits + 1:
-        multiple = firstnumber * secondnumber
-        if ispalindrome(str(multiple)):
-            if multiple > palindromenumber:
-                palindromenumber = multiple
-                numberone = firstnumber
-                numbertwo = secondnumber
-        secondnumber = secondnumber + 1
-    firstnumber = firstnumber + 1
+    # Loop through the numbers, incrementing the second number and multiplying with first.
+    # I guess we do not need to loop through all the numbers. Might be better to start somewhere in the middle?
+    while len(str(firstnumber)) < numberofdigits + 1:
+        secondnumber = seed
+        while len(str(secondnumber)) < numberofdigits + 1:
+            multiple = firstnumber * secondnumber
+            if ispalindrome(str(multiple)):
+                if multiple > palindromenumber:
+                    palindromenumber = multiple
+                    numberone = firstnumber
+                    numbertwo = secondnumber
+            secondnumber = secondnumber + 1
+        firstnumber = firstnumber + 1
 
 
-print(f"The largest palindrome number for {numberofdigits} digits is {palindromenumber}")
-print(f"The two numbers are {numberone} and {numbertwo}")
+    print(f"The largest palindrome number for {numberofdigits} digits is {palindromenumber}")
+    print(f"The two numbers are {numberone} and {numbertwo}")
+
+except ValueError:
+    print("Please enter a valid natural number between 2 and 4")
+except Exception as e:
+    print(f"Error: {e}")
+finally:
+    print("Thank you for trying this code.")
 
 
 
