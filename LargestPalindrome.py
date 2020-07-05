@@ -5,6 +5,9 @@
 # The second part then iterates over that many number of digits starting from lowest value to highest
 # It uses a nested loop so complexity is O(n^2)
 
+import time
+
+start_time = time.time()
 
 #function to check if a given number is a palindrome
 def ispalindrome(outputnum):
@@ -54,6 +57,9 @@ except Exception as e:
     print(f"Error: {e}")
 finally:
     print("Thank you for trying this code.")
+    end_time =  time.time()
+    elapsed_time = (end_time - start_time) * 1000
+    print(f"Total time taken: {round(elapsed_time,2)} ms")
 
 
 
